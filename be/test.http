@@ -1,0 +1,75 @@
+
+//USER
+
+GET http://localhost:3030/user
+
+####
+
+POST http://localhost:3030/user
+Content-Type: application/json
+
+{
+    "firstName":"damiano3",
+    "lastName":"pavon3",
+    "email":"damianopavon3@gmail.com",
+    "password":"1234525563"
+}
+
+####
+PATCH http://localhost:3030/user/661fd1e6a7bc6be8f5d00d6e
+Content-Type: application/json
+
+{
+     "firstName":"Damiano",
+     "lastName": "Pavon"
+}
+
+####
+DELETE http://localhost:3030/user/661fd1e6a7bc6be8f5d00d6e
+
+
+
+
+
+//PRODUCT
+
+####
+GET http://localhost:3030/product?page=2
+
+####
+GET http://localhost:3030/product/661fda17414c6ca89cc14063
+
+####
+POST http://localhost:3030/product
+Content-Type: application/json
+
+{
+    "image":"https://s3.amazonaws.com/images.larianna.it/P22---l%27arianna---EC1160010.JPG",
+    "title":"Decollete in pelle arancio con tacco basso e punta tonda",
+    "price":"150",
+    "description":"In morbida pelle arancio con tacco basso e punta tonda.",
+    "category":"Donna"
+    
+}
+
+####
+PATCH  http://localhost:3030/product/661fda17414c6ca89cc14063
+Content-Type: application/json
+
+{
+    "price":"30"
+}
+
+####
+DELETE http://localhost:3030/product/661fda17414c6ca89cc14063
+
+
+//LOGIN
+####
+POST  http://localhost:3030/login
+Content-Type: application/json
+
+{
+    "email":"damianopavon2@gmail.com",
+    "password":"123452"
+}
