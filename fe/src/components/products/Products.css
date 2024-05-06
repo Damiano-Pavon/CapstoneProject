@@ -1,0 +1,40 @@
+.all-products {
+  margin-block: 100px;
+  height: 100vh;
+}
+select {
+  border-radius: 10px;
+  position: fixed !important;
+  top: 70px;
+  right: 120px;
+  z-index: 1;
+  border: 3px solid black;
+}
+.search-input {
+  border: 3px solid black;
+  margin-inline: 0;
+}
+.search-btn {
+  border: 3px solid black;
+  margin-inline: 0;
+}
+.search {
+  display: flex;
+  position: fixed !important;
+  top: 70px;
+  z-index: 1;
+}
+
+.header-products {
+  margin-block: 20px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.card img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+.card {
+  border-color: white !important;
+}

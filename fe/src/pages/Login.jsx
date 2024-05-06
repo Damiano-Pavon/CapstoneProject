@@ -8,7 +8,7 @@ import { useNavigate,Link } from "react-router-dom";
 const Login = () => {
   const client = new AxiosClient();
   const [formData, setFormData] = useState({});
-  console.log(formData);
+  
   const navigate = useNavigate();
 
   const onChangeInput = (e) => {
@@ -73,7 +73,7 @@ const Login = () => {
 
       <Form.Group>
         <Col>
-          <Button onClick={handleLoginWithGithub} variant="success" type="submit">
+          <Button onClick={handleLoginWithGithub} variant="success" type="button">
             Login with Github
           </Button>
         </Col>

@@ -34,7 +34,14 @@ DELETE http://localhost:3030/user/661fd1e6a7bc6be8f5d00d6e
 //PRODUCT
 
 ####
-GET http://localhost:3030/product?page=2
+GET http://localhost:3030/product
+
+####
+GET http://localhost:3030/product/men
+
+
+####
+GET http://localhost:3030/product/women
 
 ####
 GET http://localhost:3030/product/661fda17414c6ca89cc14063
@@ -44,20 +51,20 @@ POST http://localhost:3030/product
 Content-Type: application/json
 
 {
-    "image":"https://s3.amazonaws.com/images.larianna.it/P22---l%27arianna---EC1160010.JPG",
-    "title":"Decollete in pelle arancio con tacco basso e punta tonda",
-    "price":"150",
-    "description":"In morbida pelle arancio con tacco basso e punta tonda.",
+    "image":"https://m.media-amazon.com/images/I/61ZZqUdyhTL._AC_UF1000,1000_QL80_DpWeblab_.jpg",
+    "title":"Tedixu Scarpe da Ginnastica di Tela Scarpe da Ginnastica ",
+    "price":"100",
+    "description":"Comode e performanti",
     "category":"Donna"
     
 }
 
 ####
-PATCH  http://localhost:3030/product/661fda17414c6ca89cc14063
+PATCH  http://localhost:3030/product/66367d842d44554fdd21b533
 Content-Type: application/json
 
 {
-    "price":"30"
+    "image":"https://res.cloudinary.com/dp7v6spca/image/upload/v1714848859/PRODUCTS/luc6mfsxvvz8swhbzhyu.jpg"
 }
 
 ####
@@ -70,6 +77,6 @@ POST  http://localhost:3030/login
 Content-Type: application/json
 
 {
-    "email":"damianopavon2@gmail.com",
-    "password":"123452"
+    "email":"damianopavon3@gmail.com",
+    "password":"1234525563"
 }

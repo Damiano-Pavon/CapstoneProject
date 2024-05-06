@@ -1,6 +1,11 @@
 const express = require("express");
 const product = express.Router();
 const productModel = require("../models/product");
+const verifyToken = require("../middlewares/verifyToken");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
 require("dotenv").config();
 
 //get di tutti i prodotti
@@ -19,6 +24,83 @@ product.get("/", async (req, res) => {
       totalPages: Math.ceil(totalProducts / pageSize),
     });
   } catch (err) {
+    console.error(err);
+    res.status(500).send({
+      statusCode: 500,
+      message: "Errore nel recuperare i prodotti",
+    });
+  }
+});
+
+// Ricerca dei prodotti
+product.get("/search", async (req, res) => {
+  const { page = 1, pageSize = 5, searchTerm = "" } = req.query;
+  try {
+    const regex = new RegExp(searchTerm, "i");
+    const products = await productModel
+      .find({ title: regex })
+      .limit(pageSize)
+      .skip((page - 1) * pageSize);
+    const totalProducts = await productModel.countDocuments({ title: regex });
+
+    res.status(200).send({
+      products,
+      currentPage: +page,
+      totalPages: Math.ceil(totalProducts / pageSize),
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({
+      statusCode: 500,
+      message: "Errore nel recuperare i prodotti",
+    });
+  }
+});
+
+//get dei prodotti da uomo
+product.get("/men", async (req, res) => {
+  const { page = 1, pageSize = 5 } = req.query;
+  try {
+    const products = await productModel
+      .find({ category: "Uomo" })
+      .limit(pageSize)
+      .skip((page - 1) * pageSize);
+    const totalProducts = await productModel.countDocuments({
+      category: "Uomo",
+    });
+
+    res.status(200).send({
+      products,
+      currentPage: +page,
+      totalPages: Math.ceil(totalProducts / pageSize),
+    });
+  } catch (error) {
+    console.error(err);
+    res.status(500).send({
+      statusCode: 500,
+      message: "Errore nel recuperare i prodotti",
+    });
+  }
+});
+
+//get dei prodotti da donna
+product.get("/women", async (req, res) => {
+  const { page = 1, pageSize = 5 } = req.query;
+  try {
+    const products = await productModel
+      .find({ category: "Donna" })
+      .limit(pageSize)
+      .skip((page - 1) * pageSize);
+    const totalProducts = await productModel.countDocuments({
+      category: "Donna",
+    });
+
+    res.status(200).send({
+      products,
+      currentPage: +page,
+      totalPages: Math.ceil(totalProducts / pageSize),
+    });
+  } catch (error) {
     console.error(err);
     res.status(500).send({
       statusCode: 500,
@@ -154,5 +236,36 @@ product.delete("/:id", async (req, res) => {
     });
   }
 });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const cloudStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "PRODUCTS",
+    public_id: (req, file) => file.name,
+  },
+});
+
+const cloudUpload = multer({ storage: cloudStorage });
+
+product.post(
+  "/cloudUploadImg",
+  cloudUpload.single("uploadImg"),
+  async (req, res) => {
+    try {
+      res.status(200).json({ source: req.file.path });
+    } catch (error) {
+      res.status(500).send({
+        statusCode: 200,
+        message: "Internal server error",
+      });
+    }
+  }
+);
 
 module.exports = product;
