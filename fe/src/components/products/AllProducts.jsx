@@ -2,6 +2,7 @@
  import axios from "axios";
  import SingleProduct from "./SingleProduct";
  import "./Products.css";
+ import Button from "react-bootstrap/Button";
   
  function AllProducts() {
    const [products, setProducts] = useState([]);
@@ -10,8 +11,8 @@
    const [genderFilter, setGenderFilter] = useState("All");
    const [currentPage, setCurrentPage] = useState(1);
    const [totalPages, setTotalPages] = useState(1);
-   const pageSize = 3;
-   const token = JSON.parse(localStorage.getItem("auth"));
+   const pageSize = 8;
+   //const token = JSON.parse(localStorage.getItem("auth"));
   
    const getProducts = async (page, category = "", searchTerm = "") => {
      try {
@@ -20,7 +21,7 @@
          {
            headers: {
              "Content-Type": "application/json",
-             Authorization: token,
+             //Authorization: token,
            },
            params: {
              page,
@@ -74,11 +75,11 @@
          <input
            className="search-input"
            type="text"
-           placeholder="Search product"
+           placeholder="Cerca prodotto"
            value={searchInput}
            onChange={(e) => setSearchInput(e.target.value)} 
          />
-         <button className="search-btn" onClick={handleSearch}>Search</button>
+         <Button className="search-btn" onClick={handleSearch}>Cerca</Button>
          </div>
          <select
            value={genderFilter}

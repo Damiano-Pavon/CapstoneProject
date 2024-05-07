@@ -45,7 +45,7 @@ github.get(
   "/auth/github",
   passport.authenticate("github", { scope: ["user:email"] }),
   (req, res) => {
-    const redirectUrl = `http://localhost:3000/home?user=${encodeURIComponent(
+    const redirectUrl = `http://localhost:3000/cart?user=${encodeURIComponent(
       JSON.stringify(req.user)
     )}`;
     res.redirect(redirectUrl);
@@ -60,15 +60,15 @@ github.get(
     console.log("USER LOG", user);
 
     const token = jwt.sign(user, process.env.SECRET_KEY);
-    const redirectUrl = `http://localhost:3000/home?token=${encodeURIComponent(
+    const redirectUrl = `http://localhost:3000/cart?token=${encodeURIComponent(
       token
     )}`;
     res.redirect(redirectUrl);
   }
 );
 
-github.get("/home", (req, res) => {
-  res.redirect("http://localhost:3000/home");
+github.get("/cart", (req, res) => {
+  res.redirect("http:localhost:3000/cart");
 });
 
 module.exports = github;

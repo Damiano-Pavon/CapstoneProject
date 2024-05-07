@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCart } from '../components/context/CartContext';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import {loadStripe} from "@stripe/stripe-js"
+import MyNavbar from '../components/navbar/MyNavbar';
+import { useNavigate } from 'react-router-dom';
+
 
 function Cart() {
   const { state, dispatch } = useCart();
+    const navigate = useNavigate();
+
+useEffect(() => {
+  const token = localStorage.getItem('auth');
+  if (!token) {
+    navigate('/login');
+  }
+}, [navigate]);
 
   const incrementQuantity = (productId) => {
     dispatch({ type: "INCREMENTA_QUANTITA", payload: { _id: productId } }); 
@@ -22,6 +32,8 @@ function Cart() {
 
 
   return (
+    <>
+    <MyNavbar/>
     <div className='container'>
       <h2>Carrello</h2>
       {state.cart.length === 0 ? (
@@ -58,9 +70,12 @@ function Cart() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
 export default Cart;
+
+
 
 

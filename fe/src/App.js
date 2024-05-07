@@ -6,15 +6,16 @@ import Register from "./pages/Register";
 import Details from "./pages/Details";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./components/context/CartContext";
+import PrivateRoute from "./components/protectedRoute/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <CartProvider>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

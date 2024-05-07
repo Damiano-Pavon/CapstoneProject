@@ -22,7 +22,7 @@ const Register = () => {
     const response = await client.post("/user", formData);
     if (response.statusCode === 201) {
       
-      navigate("/home");
+      navigate("/cart");
     }
   };
 

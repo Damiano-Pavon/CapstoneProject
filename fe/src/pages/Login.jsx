@@ -23,7 +23,7 @@ const Login = () => {
     const response = await client.post("/login", formData);
     if (response.statusCode === 200) {
       localStorage.setItem("auth", JSON.stringify(response.token));
-      navigate("/home");
+      navigate("/cart");
     }
   };
 
