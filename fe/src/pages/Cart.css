@@ -1,0 +1,14 @@
+.cart-product {
+  min-height: 100vh;
+  border-radius: 20px;
+  padding-block: 20px;
+}
+.cart-card {
+  border: 1px solid black !important;
+}
+.button {
+  margin: 10px;
+}
+.h2-cart {
+  padding-top: 100px;
+}

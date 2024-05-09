@@ -1,20 +1,21 @@
 .all-products {
   margin-block: 100px;
-  height: 100vh;
 }
 select {
   border-radius: 10px;
   position: fixed !important;
   top: 70px;
-  right: 120px;
+  right: 5%;
   z-index: 1;
   border: 3px solid black;
 }
 .search-input {
+  max-width: 50%;
   border: 3px solid black;
   border-radius: 5px;
 }
 .search-btn {
+  max-width: 30%;
   margin-inline: 10px;
 }
 .search {
@@ -36,5 +37,5 @@ select {
   object-fit: contain;
 }
 .card {
-  border-color: white !important;
+  border: none !important;
 }

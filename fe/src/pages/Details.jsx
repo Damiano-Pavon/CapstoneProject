@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { useCart } from "../components/context/CartContext";
+import { useCart } from "../context/CartContext";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyNavbar from "../components/navbar/MyNavbar";
+import "./Details.css"
+import Footer from "../components/footer/Footer";
 
 function Details() {
   const { id } = useParams();
@@ -40,10 +42,11 @@ function Details() {
   return (
     <>
     <MyNavbar/>
-    <div className="container my-5">
-      <h1>DETTAGLI</h1>
+    <h2 className="h2-details text-center ">DETTAGLI</h2>
+    <div className="detail-product container">
+     
       {product && (
-        <Card>
+        <Card className="mb-5">
           <Card.Body>
             <Row>
               <Col sm={4}>
@@ -52,10 +55,10 @@ function Details() {
               <Col sm={8}>
                 <Card.Title>{product.title}</Card.Title>
                 <Card.Text>
-                  <p>Price: {product.price}$</p>
-                  <p><strong>Category:</strong> {product.category}</p>
-                  <p><strong>Description:</strong> {product.description}</p>
-                  <p><strong>Published on:</strong> {new Date(product.createdAt).toLocaleDateString()}</p>
+                  <p><strong>Price:</strong> {product.price}$</p>
+                  <p><strong>Categoria:</strong> {product.category}</p>
+                  <p><strong>Descrizione:</strong> {product.description}</p>
+                  <p><strong>Pubblicato il:</strong> {new Date(product.createdAt).toLocaleDateString()}</p>
                 </Card.Text>
                 <Button onClick={addToCart}>Aggiungi al Carrello</Button>
                 {addedToCart && <p style={{ color: "green" }}>Aggiunto al carrello!</p>}
@@ -65,6 +68,7 @@ function Details() {
         </Card>
       )}
     </div>
+    <Footer/>
     </>
   );
 }

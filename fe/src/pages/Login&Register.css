@@ -1,0 +1,5 @@
+.login,
+.register {
+  min-height: 100vh;
+  max-width: 400px !important;
+}

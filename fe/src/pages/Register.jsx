@@ -3,10 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AxiosClient from "../client/client";
 import { useNavigate } from "react-router-dom";
+import MyNavbar from "../components/navbar/MyNavbar";
+import Footer from "../components/footer/Footer";
+import "./Login&Register.css"
 
 const Register = () => {
   const client = new AxiosClient();
   const [formData, setFormData] = useState({});
+  const [error,setError]=useState(null)
   const navigate = useNavigate();
 
   const onChangeInput = (e) => {
@@ -17,17 +21,30 @@ const Register = () => {
     });
   };
 
-  const onSubmit = async (e) => {
+ const onSubmit = async (e) => {
     e.preventDefault();
+    try{
     const response = await client.post("/user", formData);
     if (response.statusCode === 201) {
-      
+     localStorage.setItem("auth", response.token);
       navigate("/cart");
     }
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      setError("Si sono verificati degli errori nei dati inseriti. Controlla e riprova.");
+    } else {
+      setError("Si è verificato un errore durante la registrazione. Si prega di riprovare più tardi.");
+    }
+  }
   };
 
-  return (
-    <Form onSubmit={onSubmit} className="m-5" style={{ width: 400 }}>
+
+return (
+  <>
+  <MyNavbar/>
+  <div className="register container py-5">
+  {error && <div className="alert alert-danger">{error}</div>}
+    <Form onSubmit={onSubmit} className="form container my-5" >
       <Form.Group className="mb-3" controlId="formBasicFirstName">
         <Form.Label>First Name</Form.Label>
         <Form.Control
@@ -72,6 +89,9 @@ const Register = () => {
         Register
       </Button>
     </Form>
+    </div>
+    <Footer/>
+    </>
   );
 };
 

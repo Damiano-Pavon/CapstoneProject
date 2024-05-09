@@ -5,8 +5,7 @@ import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import Details from "./pages/Details";
 import Cart from "./pages/Cart";
-import { CartProvider } from "./components/context/CartContext";
-import PrivateRoute from "./components/protectedRoute/ProtectedRoute";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (

@@ -4,6 +4,7 @@ const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const validateUserBody = require("../middlewares/validateUserBody");
 const verifyToken = require("../middlewares/verifyToken");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 // get di tutti gli utenti
@@ -32,9 +33,11 @@ user.post("/", validateUserBody, async (req, res) => {
   });
   try {
     const userToSave = await newUser.save();
+    const token = jwt.sign({ userId: userToSave._id }, "your_secret_key_here");
     res.status(201).send({
       statusCode: 201,
       payload: userToSave,
+      token: token,
     });
   } catch (e) {
     res.status(500).send({

@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const session = require("express-session");
 const passport = require("passport");
 const userModel = require("../models/user");
+
 require("dotenv").config();
 
 github.use(
@@ -45,6 +46,7 @@ github.get(
   "/auth/github",
   passport.authenticate("github", { scope: ["user:email"] }),
   (req, res) => {
+    console.log("1234");
     const redirectUrl = `http://localhost:3000/cart?user=${encodeURIComponent(
       JSON.stringify(req.user)
     )}`;
@@ -57,18 +59,15 @@ github.get(
   passport.authenticate("github", { failureRedirect: "/" }),
   (req, res) => {
     const user = req.user;
-    console.log("USER LOG", user);
-
     const token = jwt.sign(user, process.env.SECRET_KEY);
-    const redirectUrl = `http://localhost:3000/cart?token=${encodeURIComponent(
+    console.log("ciao");
+    console.log(token);
+
+    const redirectUrl = `http://localhost:3000/login?token=${encodeURIComponent(
       token
     )}`;
     res.redirect(redirectUrl);
   }
 );
-
-github.get("/cart", (req, res) => {
-  res.redirect("http:localhost:3000/cart");
-});
 
 module.exports = github;

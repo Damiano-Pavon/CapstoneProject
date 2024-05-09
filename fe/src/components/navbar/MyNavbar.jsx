@@ -6,9 +6,9 @@ import "./MyNav.css"
 
 const MyNavbar = () => {
   return (
-    <Navbar className="mb-5 my-nav" bg="dark" variant="dark" expand="lg">
+    <Navbar className="mb-5 my-nav" data-bs-theme="dark" >
       <div className="container">
-        <Navbar.Brand>My Commerce</Navbar.Brand>
+        <Navbar.Brand>MyCommerce</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
