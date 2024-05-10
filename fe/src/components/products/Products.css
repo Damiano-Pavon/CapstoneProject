@@ -1,6 +1,10 @@
 .all-products {
   margin-block: 100px;
 }
+
+.products {
+  min-height: 100vh;
+}
 select {
   border-radius: 10px;
   position: fixed !important;

@@ -51,10 +51,10 @@ POST http://localhost:3030/product
 Content-Type: application/json
 
 {
-    "image":"https://res.cloudinary.com/dp7v6spca/image/upload/v1715282415/PRODUCTS/s6aetvxrayeojswwks7h.webp",
-    "title":"Pantaloni uomo nero quadri eleganti casual slim fit in cotone Principe di Galles",
-    "price":"30",
-    "description":" Pantaloni neri comodi ed eleganti ",
+    "image":"https://res.cloudinary.com/dp7v6spca/image/upload/v1715336261/PRODUCTS/vxvjqcm1ebcppfs7z9lz.webp",
+    "title":"K-Way Cappello Uomo Con Visiera K711Dw",
+    "price":"14",
+    "description":" Cappello con visiera leggero e resistente ",
     "category":"Uomo"
     
 }

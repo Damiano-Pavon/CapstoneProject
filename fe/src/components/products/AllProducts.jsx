@@ -92,6 +92,7 @@ function AllProducts() {
   return (
     
     <div className="container all-products">
+      <div className="products">
       <div className="header-products">
        <div className="search">
         <input
@@ -117,12 +118,12 @@ function AllProducts() {
           <SingleProduct key={product._id} product={product} />
         ))}
       </div>
-  
+      </div>
       <div className="text-center py-5">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           {"<"}
         </button>
-        <span>Page {currentPage} of {totalPages}</span>
+        <span className="mx-2">Pagina {currentPage} di {totalPages}</span>
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
           {">"}
         </button>
