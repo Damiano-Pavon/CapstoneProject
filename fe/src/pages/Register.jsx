@@ -44,7 +44,7 @@ return (
   <MyNavbar/>
   <div className="register container py-5">
   {error && <div className="alert alert-danger">{error}</div>}
-    <Form onSubmit={onSubmit} className="form container my-5" >
+    <Form onSubmit={onSubmit} className="container my-5" >
       <Form.Group className="mb-3" controlId="formBasicFirstName">
         <Form.Label>First Name</Form.Label>
         <Form.Control
