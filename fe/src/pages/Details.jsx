@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -44,9 +44,8 @@ function Details() {
     <MyNavbar/>
     <h2 className="h2-details text-center ">DETTAGLI</h2>
     <div className="detail-product container">
-     
-      {product && (
-        <Card className="mb-5">
+     {product && (
+        <Card >
           <Card.Body>
             <Row>
               <Col sm={4}>
