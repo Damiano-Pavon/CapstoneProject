@@ -1,7 +1,6 @@
 {
   "name": "be",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon main.js",
@@ -28,5 +27,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-  }
+  },
+  "description": ""
 }
