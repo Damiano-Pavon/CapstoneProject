@@ -101,13 +101,13 @@ import "./Login&Register.css"
          </Col>
        </Form.Group>
 
-       <Form.Group>
+       {/* <Form.Group>
          <Col>
            <Button onClick={handleLoginWithGithub} variant="success" type="button">
              Login with Github
            </Button>
          </Col>
-       </Form.Group>
+       </Form.Group> */}
       
      </Form>
      </div>
